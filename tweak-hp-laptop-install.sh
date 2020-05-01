@@ -6,28 +6,6 @@ set -e
 #
 ##################################################################################################################
 
-function addRepos() {
-	sudo pacman-key -r 74F5DE85A506BF64
-	sudo pacman-key --lsign-key 74F5DE85A506BF64
-	sudo pacman-key --refresh-keys
-
-	echo "Getting the latest arcolinux mirrors file"
-
-	sudo pacman -S wget --noconfirm --needed
-	sudo wget https://raw.githubusercontent.com/arcolinux/arcolinux-mirrorlist/master/etc/pacman.d/arcolinux-mirrorlist -O /etc/pacman.d/arcolinux-mirrorlist
-
-
-echo '
-[arcolinux_repo_3party]
-SigLevel = Required DatabaseOptional
-Include = /etc/pacman.d/arcolinux-mirrorlist
-
-[arcolinux_repo_xlarge]
-SigLevel = Required DatabaseOptional
-Include = /etc/pacman.d/arcolinux-mirrorlist' | sudo tee --append /etc/pacman.conf
-
-	sudo pacman -Syy
-}
 
 function installSublime() {
     curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
@@ -38,14 +16,9 @@ function installSublime() {
 function installNvidiaDriversOptimusManager() {
 	# Install nvidia-440xx drivers and Optimus Manager
 	sudo pacman -S --noconfirm --needed linux56-nvidia-440xx nvidia-440xx-utils linux56-bbswitch lib32-virtualgl lib32-nvidia-440xx-utils xf86-video-nouveau 
-
-	if pacman -Qi "optimus-manager" &> /dev/null; then
-		echo
-	else
-		sudo pacman -S --noconfirm --needed optimus-manager 
-		yay -S --noconfirm optimus-manager-qt
-		sudo systemctl enable optimus-manager.service
-	fi	
+	sudo pacman -S --noconfirm --needed optimus-manager 
+	yay -S --noconfirm optimus-manager-qt
+	sudo systemctl enable optimus-manager.service
 }
 
 function setHardwareClock() {
@@ -57,27 +30,19 @@ function setHardwareClock() {
 function installBlueToothDriver() {
 	# Install headers and dkms
 	sudo pacman -S --noconfirm --needed linux56-headers dkms
-	# Install Bluetooth Driver -  may be causing issues with latest kernels
-	if pacman -Qi "rtbth-dkms-git" &> /dev/null; then
-		echo
-	else
-		yay -S --noconfirm rtbth-dkms-git
-		sudo touch /etc/modules-load.d/rtbth.conf
-		sudo su -c 'echo -e "rtbth" > /etc/modules-load.d/rtbth.conf'
-	fi
-
+	# Install Bluetooth Driver 
+	yay -S --noconfirm rtbth-dkms-git
+	sudo touch /etc/modules-load.d/rtbth.conf
+	sudo su -c 'echo -e "rtbth" > /etc/modules-load.d/rtbth.conf'
 }
 
 function applyTweaks() {
 	# Fix dns issues during and after vpn connection
-	sudo pacman -S --needed systemd-resolvconf 
-	sudo pacman -S --needed --noconfirm vivaldi-widevine vivaldi-ffmpeg-codecs flashplugin pepper-flash vivaldi vlc  
-	sudo pacman -S --needed --noconfirm qt5-translations aspell-en gimp-help-en hunspell-en_AU hyphen-en firefox-i18n-en-us hunspell-en_US
+	#sudo pacman -S --needed systemd-resolvconf 
+	sudo pacman -S --needed --noconfirm  pamac-flatpak-plugin pamac-snap-plugin
+	sudo pacman -S --needed --noconfirm  flashplugin pepper-flash vlc 
+	sudo pacman -S --needed --noconfirm qt5-translations aspell-en gimp-help-en hunspell-en_AU hyphen-en firefox-i18n-en-us hunspell-en_US thunderbird-i18n-en-us
 	yay -S --noconfirm youtube-dl-gui-git
-	# Extra Network Manager VPN clients
-	sudo pacman -S --needed --noconfirm networkmanager-fortisslvpn openfortivpn xl2tpd strongswan freerdp remmina
-	yay -S --noconfirm networkmanager-l2tp
-
 }
 
 function Gaming() {
@@ -90,7 +55,6 @@ function installVirtualBox() {
 }
 
 
-addRepos
 installSublime
 installNvidiaDriversOptimusManager
 setHardwareClock
