@@ -8,4 +8,6 @@ set -e
 
 sudo pacman -S --needed --noconfirm manjaro-tools-iso git
 git clone https://gitlab.manjaro.org/profiles-and-settings/iso-profiles.git ~/iso-profiles
-
+#cp user-repos.conf ~/iso-profiles/community/cinnamon/
+#cat Packages-Desktop-extras >> ~/iso-profiles/community/cinnamon/Packages-Desktop
+#buildiso -f -p cinnamon -k linux56
