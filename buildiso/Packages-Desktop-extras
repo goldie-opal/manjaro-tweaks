@@ -1,10 +1,8 @@
+# Dkms
 linux56-headers
 dkms
-pamac-flatpak-plugin
-pamac-snap-plugin
-flashplugin
-pepper-flash
-vlc
+
+# Language pack
 qt5-translations
 aspell-en
 gimp-help-en
@@ -13,6 +11,8 @@ hyphen-en
 firefox-i18n-en-us
 hunspell-en_US
 thunderbird-i18n-en-us
+
+# Wine
 wine-staging
 giflib
 lib32-giflib
@@ -62,12 +62,23 @@ vulkan-icd-loader
 lib32-vulkan-icd-loader
 wine-gecko
 wine-mono
+
+# Gaming
 lutris
 steam-native
 steam-manjaro
+
+# Extra applications
 sublime-text
-manjaro-tools-iso
-git
 etcher
 mintstick
 meld
+pamac-flatpak-plugin
+pamac-snap-plugin
+flashplugin
+pepper-flash
+vlc
+
+# Buildiso
+manjaro-tools-iso
+git
