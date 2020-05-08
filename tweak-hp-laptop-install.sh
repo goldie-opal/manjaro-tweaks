@@ -54,6 +54,13 @@ function installVirtualBox() {
 	sudo pacman -S --needed --noconfirm virtualbox linux56-virtualbox-host-modules
 }
 
+function setPeriodicTrim() {
+	#Enable periodic trim
+	sudo sed -i 's/,discard / /g' /etc/fstab
+	sudo systemctl enable fstrim.timer
+	sudo systemctl start fstrim.timer
+}
+
 
 installSublime
 installNvidiaDriversOptimusManager
@@ -62,3 +69,4 @@ installBlueToothDriver
 applyTweaks
 Gaming
 installVirtualBox
+setPeriodicTrim
