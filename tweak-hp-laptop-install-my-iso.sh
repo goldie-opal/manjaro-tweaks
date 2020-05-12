@@ -16,7 +16,7 @@ function installNvidiaDriversOptimusManager() {
 	# Install nvidia-440xx drivers and Optimus Manager
 	sudo pacman -S --noconfirm --needed linux56-nvidia-440xx nvidia-440xx-utils linux56-bbswitch lib32-virtualgl lib32-nvidia-440xx-utils xf86-video-nouveau 
 	sudo pacman -S --noconfirm --needed optimus-manager 
-	yay -S --noconfirm optimus-manager-qt
+	yay -S --noconfirm optimus-manager-qt-git
 	sudo systemctl enable optimus-manager.service
 }
 
