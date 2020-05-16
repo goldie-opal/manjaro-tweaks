@@ -17,8 +17,8 @@ function installNvidiaDriversOptimusManager() {
 	# Install nvidia-440xx drivers and Optimus Manager
 	sudo pacman -S --noconfirm --needed linux56-nvidia-440xx nvidia-440xx-utils linux56-bbswitch lib32-virtualgl lib32-nvidia-440xx-utils xf86-video-nouveau 
 	sudo pacman -S --noconfirm --needed optimus-manager 
-	yay -S --noconfirm optimus-manager-qt-git
 	sudo systemctl enable optimus-manager.service
+	sudo cp config/optimus-manager.conf /etc/optimus-manager
 }
 
 function setHardwareClock() {
@@ -42,7 +42,6 @@ function applyTweaks() {
 	sudo pacman -S --needed --noconfirm  pamac-flatpak-plugin pamac-snap-plugin
 	sudo pacman -S --needed --noconfirm  flashplugin pepper-flash vlc etcher mintstick meld
 	sudo pacman -S --needed --noconfirm qt5-translations aspell-en gimp-help-en hunspell-en_AU hyphen-en firefox-i18n-en-us hunspell-en_US thunderbird-i18n-en-us
-	yay -S --noconfirm youtube-dl-gui-git
 }
 
 function Gaming() {

@@ -16,8 +16,8 @@ function installNvidiaDriversOptimusManager() {
 	# Install nvidia-440xx drivers and Optimus Manager
 	sudo pacman -S --noconfirm --needed linux56-nvidia-440xx nvidia-440xx-utils linux56-bbswitch lib32-virtualgl lib32-nvidia-440xx-utils xf86-video-nouveau 
 	sudo pacman -S --noconfirm --needed optimus-manager 
-	yay -S --noconfirm optimus-manager-qt-git
 	sudo systemctl enable optimus-manager.service
+	sudo cp config/optimus-manager.conf /etc/optimus-manager
 }
 
 function setHardwareClock() {
@@ -35,10 +35,6 @@ function installBlueToothDriver() {
 	sudo su -c 'echo -e "rtbth" > /etc/modules-load.d/rtbth.conf'
 }
 
-function applyTweaks() {
-	yay -S --noconfirm youtube-dl-gui-git
-}
-
 function installVirtualBox() {
 	sudo pacman -S --needed --noconfirm virtualbox linux56-virtualbox-host-modules
 }
@@ -54,6 +50,5 @@ installSublime
 installNvidiaDriversOptimusManager
 setHardwareClock
 installBlueToothDriver
-applyTweaks
 installVirtualBox
 setPeriodicTrim
