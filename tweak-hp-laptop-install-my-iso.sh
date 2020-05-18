@@ -46,7 +46,7 @@ function setPeriodicTrim() {
 	sudo systemctl start fstrim.timer
 }
 
-installSublime
+#installSublime
 installNvidiaDriversOptimusManager
 setHardwareClock
 installBlueToothDriver
