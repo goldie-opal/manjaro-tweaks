@@ -18,7 +18,7 @@ function installNvidiaDriversOptimusManager() {
 	sudo pacman -S --noconfirm --needed linux56-nvidia-440xx nvidia-440xx-utils linux56-bbswitch lib32-virtualgl lib32-nvidia-440xx-utils xf86-video-nouveau 
 	sudo pacman -S --noconfirm --needed optimus-manager 
 	sudo systemctl enable optimus-manager.service
-	sudo cp config/optimus-manager.conf /etc/optimus-manager
+	yay -S --noconfirm optimus-manager-qt
 }
 
 function setHardwareClock() {
