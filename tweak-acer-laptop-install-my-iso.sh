@@ -35,7 +35,7 @@ function setPeriodicTrim() {
 function setSilentBoot() {
 	#Remove fsck message
 	sudo sed -i 's/ fsck/ /g' /etc/mkinitcpio.conf
-	sudo mkinitcpio -p linux
+	sudo mkinitcpio -P
 }
 
 #installSublime

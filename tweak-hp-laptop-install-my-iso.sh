@@ -14,7 +14,7 @@ function installSublime() {
 
 function installNvidiaDriversOptimusManager() {
 	# Install nvidia-440xx drivers and Optimus Manager
-	sudo pacman -S --noconfirm --needed linux56-nvidia-440xx nvidia-440xx-utils linux56-bbswitch lib32-virtualgl lib32-nvidia-440xx-utils xf86-video-nouveau 
+	sudo pacman -S --noconfirm --needed linux510-nvidia-440xx nvidia-440xx-utils linux510-bbswitch lib32-virtualgl lib32-nvidia-440xx-utils xf86-video-nouveau 
 	sudo pacman -S --noconfirm --needed optimus-manager 
 	sudo systemctl enable optimus-manager.service
 	yay -S --noconfirm optimus-manager-qt

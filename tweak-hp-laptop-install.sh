@@ -15,7 +15,7 @@ function installSublime() {
 
 function installNvidiaDriversOptimusManager() {
 	# Install nvidia-440xx drivers and Optimus Manager
-	sudo pacman -S --noconfirm --needed linux56-nvidia-440xx nvidia-440xx-utils linux56-bbswitch lib32-virtualgl lib32-nvidia-440xx-utils xf86-video-nouveau 
+	sudo pacman -S --noconfirm --needed linux510-nvidia-440xx nvidia-440xx-utils linux510-bbswitch lib32-virtualgl lib32-nvidia-440xx-utils xf86-video-nouveau 
 	sudo pacman -S --noconfirm --needed optimus-manager 
 	sudo systemctl enable optimus-manager.service
 	yay -S --noconfirm optimus-manager-qt
@@ -29,7 +29,7 @@ function setHardwareClock() {
 
 function installBlueToothDriver() {
 	# Install headers and dkms
-	sudo pacman -S --noconfirm --needed linux56-headers dkms
+	sudo pacman -S --noconfirm --needed linux510-headers dkms
 	# Install Bluetooth Driver 
 	yay -S --noconfirm rtbth-dkms-git
 	sudo touch /etc/modules-load.d/rtbth.conf
@@ -50,7 +50,7 @@ function Gaming() {
 }
 
 function installVirtualBox() {
-	sudo pacman -S --needed --noconfirm virtualbox linux56-virtualbox-host-modules
+	sudo pacman -S --needed --noconfirm virtualbox linux510-virtualbox-host-modules
 }
 
 function setPeriodicTrim() {
